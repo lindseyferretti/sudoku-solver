@@ -12,21 +12,24 @@ public class Board {
     private int c;
 
     /**
-     * Creates the initial puzzle from the user-given file using Cells.
+     * Creates the initial puzzle from the user-given file using cells.
      * @param filename for the unsolved sudoku puzzle
      * @throws FileNotFoundException if sudoku input file was not found
      */
-    public Board(String filename) throws FileNotFoundException{
+    public Board(String filename) throws FileNotFoundException {
             char elem;
             try (Scanner in = new Scanner(new File(filename))) {
-            in.nextLine();
-            for (r = 0; r < 9; r++) {
-                for (c = 0; c < 9; c++) {
-                    elem = in.next().charAt(0);
-                    this.setCell(r, c, new Cell(String.valueOf(elem)));
+                in.nextLine();
+                for (r = 0; r < 9; r++) {
+                    for (c = 0; c < 9; c++) {
+                        elem = in.next().charAt(0);
+                        this.setCell(r, c, new Cell(String.valueOf(elem)));
+                    }
                 }
             }
-        }
+            catch (FileNotFoundException fnf) {
+                    fnf.printStackTrace();
+            }
     }
 
     /**
@@ -36,17 +39,17 @@ public class Board {
      * @return cell at position (r, c)
      */
     public Cell getCell(int r, int c) {
-        return this.board[r][c];
+        return board[r][c];
     }
 
     /**
      * Sets the cell value at a given position.
      * @param r indicates current row
      * @param c indicates current column
-     * @param Cell cell at position (r, c)
+     * @param cell cell at position (r, c)
      */
-    public void setCell(int r, int c, Cell Cell) {
-        this.board[r][c] = Cell;
+    public void setCell(int r, int c, Cell cell) {
+        board[r][c] = cell;
     }
 
     /**

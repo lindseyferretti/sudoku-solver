@@ -1,5 +1,5 @@
 /**
- * Cells are individual units that hold one value.
+ * Cells are individual units that hold one value on the board.
  */
 public class Cell {
     
@@ -27,6 +27,14 @@ public class Cell {
      */
     public void setVal(String value) {
         this.value = value;
+    }
+
+    /**
+     * Checks if cell contains placeholder character.
+     * @return true if placeholder found, otherwise false
+     */
+    public boolean isEmpty() {
+        return this.value.equals(".");
     }
 
     /**
